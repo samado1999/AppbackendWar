@@ -1,0 +1,151 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: "Overpass", sans-serif;
+  font-weight: bold;
+  font-size: 100%;
+  color: white;
+  margin: 0;
+  background-color: gray;
+  width: 100%;
+  height: 100%;
+}
+.header {
+  display: flex;
+  height: 10%;
+  padding-left: 5px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: gainsboro;
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  height: 7%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(18, 2, 54);
+  color: white;
+}
+
+.active {
+  background-color: rgb(18, 2, 54);
+  color: white;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea {
+  width: 210px;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  background-color: rgb(187, 169, 197);
+  outline: none;
+}
+
+input {
+  margin: 5px;
+}
+label {
+  margin: 20px;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: gainsboro;
+  color: black;
+  padding: 16px 20px;
+  margin: 8px 21px;
+  border: none;
+  cursor: pointer;
+  width: 110px;
+  opacity: 0.9;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.registerbtn:hover {
+  background-color: rgb(18, 2, 54);
+  color: white;
+}
+
+.form {
+  display: flex;
+  height: 53%;
+  width: 100%;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+.information {
+  display: flex;
+  width: 47%;
+  flex-direction: column;
+  justify-content: center;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+}
+.button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.cedula,
+.name,
+.email,
+.user-text,
+.pasword {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
