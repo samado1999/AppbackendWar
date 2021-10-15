@@ -34,7 +34,7 @@ function validar() {
 function postProveedor() {
     if (this.validar()) {
         // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-        var endPoint = 'http://201.244.154.157:8090/proveedor/guardar';
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'proveedor/guardar';
 
         console.log('endPoint: ' + endPoint);
         var jsonRequest = JSON.stringify(
@@ -93,7 +93,7 @@ function delProveedor() {
 
     if (nit != '') {
         // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-        var endPoint = 'http://201.244.154.157:8090/proveedor/eliminar/' + nit;
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'proveedor/eliminar/' + nit;
 
         console.log('endPoint: ' + endPoint);
 
@@ -149,7 +149,7 @@ function delProveedor() {
 function updateProveedor() {
     // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
     if (this.validar()) {
-        var endPoint = 'http://201.244.154.157:8090/proveedor/actualizar';
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'proveedor/actualizar';
 
         console.log('endPoint: ' + endPoint);
         var jsonRequest = JSON.stringify(
@@ -209,7 +209,7 @@ function consultarProveedor() {
     this.validar();
     // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
     if (nit !== '') {
-        var endPoint = 'http://201.244.154.157:8090/proveedor/listarById/' + nit;
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'proveedor/listarById/' + nit;
 
         console.log('endPoint: ' + endPoint);
 

@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "proveedores")
 public class Proveedor {
-	
+
 	@Id
 	private Integer nitproveedor;
 	private String ciudad_proveedor;
@@ -13,24 +13,6 @@ public class Proveedor {
 	private String nombre_proveedor;
 	private String telefono_proveedor;
 
-	public Proveedor(Integer nitproveedor, String ciudad_proveedor, String direccion_proveedor, String nombre_proveedor,
-			String telefono_proveedor) {
-		super();
-		this.nitproveedor = nitproveedor;
-		this.ciudad_proveedor = ciudad_proveedor;
-		this.direccion_proveedor = direccion_proveedor;
-		this.nombre_proveedor = nombre_proveedor;
-		this.telefono_proveedor = telefono_proveedor;
-	}
-
-	public Proveedor() {
-		super();
-		this.nitproveedor = 0;
-		this.ciudad_proveedor = null;
-		this.direccion_proveedor = null;
-		this.nombre_proveedor = null;
-		this.telefono_proveedor = null;
-	}
 
 	public Integer getNitproveedor() {
 		return nitproveedor;

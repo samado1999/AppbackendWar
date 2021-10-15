@@ -34,7 +34,7 @@ function validar() {
 function postUser() {
     if (this.validar()) {
         // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-        var endPoint = 'http://201.244.154.157:8090/usuario/guardar';
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'usuario/guardar';
 
         console.log('endPoint: ' + endPoint);
         var jsonRequest = JSON.stringify(
@@ -116,7 +116,7 @@ function delUser() {
 
     if (identification != '') {
         // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-        var endPoint = 'http://201.244.154.157:8090/usuario/eliminar/' + identification;
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'usuario/eliminar/' + identification;
 
         console.log('endPoint: ' + endPoint);
 
@@ -172,7 +172,7 @@ function delUser() {
 function updateUser() {
     // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
     if (this.validar()) {
-        var endPoint = 'http://201.244.154.157:8090/usuario/actualizar';
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'usuario/actualizar';
 
         console.log('endPoint: ' + endPoint);
         var jsonRequest = JSON.stringify(
@@ -232,7 +232,7 @@ function consultarUser() {
     this.validar();
     // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
     if (identification !== '') {
-        var endPoint = 'http://201.244.154.157:8090/usuario/listarById/' + identification;
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'usuario/listarById/' + identification;
 
         console.log('endPoint: ' + endPoint);
 

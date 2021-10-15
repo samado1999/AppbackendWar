@@ -8,6 +8,6 @@ import com.ubosque.mintic.tiendavirtual.model.Usuario;
 
 public interface UsuarioDAO extends JpaRepository<Usuario, Integer> {
 	
-	@Query(value = "SELECT * FROM tiendagenerica.usuarios WHERE usuario=:user AND password=:pass LIMIT 1;", nativeQuery = true)
+	@Query(value = "SELECT * FROM usuarios WHERE usuario=:user AND password=:pass LIMIT 1;", nativeQuery = true)
     Usuario getLogin(@Param("user") String user,@Param("pass") String pass);
 }

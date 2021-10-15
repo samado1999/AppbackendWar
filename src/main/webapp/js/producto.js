@@ -10,21 +10,23 @@ async function cargarArchivo() {
 		var data = csvToArray(text);
 		console.log(data);
 		
+		/*
 		for (var i = 0; i < data.length; i++) {
-			var jsonRequest = JSON.stringify(
-            {
-                "cedula_cliente": String(cedula),
-                "email_cliente": String(email),
-                "direccion_cliente": String(direccion),
-                "telefono_cliente": String(telefono),
-                "nombre_cliente": String(nombre)
+			var jsonRequest = JSON.stringify({
+                "ivacompra": String(cedula),
+                "nitproveedor": String(email),
+                "nombre_producto": String(direccion),
+                "precio_compra": String(telefono),
+                "precio_venta": String(nombre)
             });
 		}
+		*/
 	}
 	reader.readAsText(csv);
+
 	/*
 	let response = await
-		fetch('http://localhost:8090/producto/cargarArchivo', {
+		fetch(document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/guardar', {
 			method: "POST",
 			body: formData
 		});

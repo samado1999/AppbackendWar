@@ -21,8 +21,9 @@ function validar() {
 
 function loginUser() {
     if (this.validar()) {
-        // var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-        var endPoint = 'http://201.244.154.157:8090/usuario/login';
+        var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'usuario/login';
+        // console.log('ROOT PATH: ' + document.URL.substr(0, document.URL.indexOf("/", 8) + 1));
+        // var endPoint = '/TiendaVirtualApp/usuario/login';
 
         console.log('endPoint: ' + endPoint);
         var jsonRequest = JSON.stringify(

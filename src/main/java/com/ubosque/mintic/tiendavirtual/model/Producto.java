@@ -14,8 +14,6 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo_producto;
 	private Double ivacompra;
-	// @ManyToOne
-	// @JoinColumn(name = "nitproveedor", insertable = false, updatable = false)
 	private Integer nitproveedor;
 	private String nombre_producto;
 	private Double precio_compra;
