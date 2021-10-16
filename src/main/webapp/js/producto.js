@@ -1,66 +1,68 @@
 async function cargarArchivo() {
-	let formData = new FormData();
-	formData.append("file", fileupload.files[0]);
+	// let formData = new FormData();
+	// formData.append("file", fileupload.files[0]);
+	var list = [];
 
 	var csv = fileupload.files[0];
 	var reader = new FileReader();
-	
-	reader.onload = function (event) {
+
+	reader.onload = function(event) {
 		var text = event.target.result;
-		var data = csvToArray(text);
-		console.log(data);
-		
-		/*
-		for (var i = 0; i < data.length; i++) {
-			var jsonRequest = JSON.stringify({
-                "ivacompra": String(cedula),
-                "nitproveedor": String(email),
-                "nombre_producto": String(direccion),
-                "precio_compra": String(telefono),
-                "precio_venta": String(nombre)
-            });
+
+		const rows = text.slice(0).split("\n");
+
+		for (var i = 0; i < rows.length; i++) {
+			var fields = rows[i].split(",");
+			const prod = new Object();
+			prod.ivacompra = String(fields[0].trim());
+			prod.nitproveedor = String(fields[1].trim());
+			prod.nombre_producto = String(fields[2].trim());
+			prod.precio_compra = String(fields[3].trim());
+			prod.precio_venta = String(fields[4].trim());
+			list.push(prod);
 		}
-		*/
+
+		console.log("LISTA: " + JSON.stringify(list));
+
+		var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/guardar';
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 0) {
+                console.log('Creando cliente');
+            }
+            if (this.readyState == 1) {
+                console.log('Abriendo cliente');
+            }
+            if (this.readyState == 2) {
+                console.log('Enviando cliente');
+            }
+            if (this.readyState == 3) {
+                console.log('Cargando cliente');
+            }
+            if (this.readyState == 4) {
+                console.log('Operación completa');
+                switch (this.status) {
+                    case 200:
+                        console.log('HTTP STATUS OK');
+                        break;
+                    case 400:
+                        console.log('HTTP STATUS BAD REQUEST');
+                        break;
+                    case 500:
+                        console.log('HTTP STATUS SERVER ERROR');
+                        break;
+                    default:
+                        console.log('DEFAULT');
+                        break;
+                }
+            }
+        };
+
+        xhttp.open("POST", endPoint, true);
+        xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhttp.send(JSON.stringify(list));
+
 	}
 	reader.readAsText(csv);
-
-	/*
-	let response = await
-		fetch(document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/guardar', {
-			method: "POST",
-			body: formData
-		});
-	if (response.status == 200) {
-		alert(JSON.stringify(response));
-	} else if(response.status == 500) {
-		alert(JSON.stringify(response));
-	}
-	*/
-}
-
-function csvToArray(str, delimiter = ",") {
-  // slice from start of text to the first \n index
-  // use split to create an array from string by delimiter
-  const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-
-  // slice from \n index + 1 to the end of the text
-  // use split to create an array of each csv value row
-  const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-
-  // Map the rows
-  // split values from each row into an array
-  // use headers.reduce to create an object
-  // object properties derived from headers:values
-  // the object passed as an element of the array
-  const arr = rows.map(function (row) {
-    const values = row.split(delimiter);
-    const el = headers.reduce(function (object, header, index) {
-      object[header] = values[index];
-      return object;
-    }, {});
-    return el;
-  });
-
-  // return the array
-  return arr;
 }

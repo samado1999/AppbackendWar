@@ -3,6 +3,8 @@ package com.ubosque.mintic.tiendavirtual.api;
 import com.ubosque.mintic.tiendavirtual.dao.ProductoDAO;
 import com.ubosque.mintic.tiendavirtual.model.Producto;
 
+import java.util.List;
+
 // import com.ubosque.mintic.tiendavirtual.dao.ProductoDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,9 @@ public class ProductoAPI {
 	
 	
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
-	public void guardar(@RequestBody Producto producto) {
-		productoDAO.save(producto);
+	public void guardar(@RequestBody List<Producto> productos) {
+		System.out.println("PRODUCTOS: " + productos);
+		productoDAO.saveAll(productos);
 	}
+	
 }
