@@ -1,4 +1,4 @@
-async function cargarArchivo() {
+function cargarArchivo() {
 	// let formData = new FormData();
 	// formData.append("file", fileupload.files[0]);
 	var list = [];
