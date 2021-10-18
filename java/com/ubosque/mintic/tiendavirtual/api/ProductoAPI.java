@@ -4,6 +4,7 @@ import com.ubosque.mintic.tiendavirtual.dao.ProductoDAO;
 import com.ubosque.mintic.tiendavirtual.model.Producto;
 
 import java.util.List;
+import java.util.Optional;
 
 // import com.ubosque.mintic.tiendavirtual.dao.ProductoDAO;
 
@@ -21,8 +22,11 @@ public class ProductoAPI {
 	
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
 	public void guardar(@RequestBody List<Producto> productos) {
-		System.out.println("PRODUCTOS: " + productos);
 		productoDAO.saveAll(productos);
 	}
 	
+	@GetMapping("/listarById/{id}")
+	public Optional<Producto> listar(@PathVariable("id") Integer id) {
+		return productoDAO.findById(id);
+	}
 }

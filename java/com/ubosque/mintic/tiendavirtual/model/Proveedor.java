@@ -1,5 +1,7 @@
 package com.ubosque.mintic.tiendavirtual.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,7 +14,8 @@ public class Proveedor {
 	private String direccion_proveedor;
 	private String nombre_proveedor;
 	private String telefono_proveedor;
-
+	@OneToMany(mappedBy = "nitproveedor", cascade = CascadeType.ALL)
+    private List<Producto> productos;
 
 	public Integer getNitproveedor() {
 		return nitproveedor;

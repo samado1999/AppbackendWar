@@ -273,3 +273,108 @@ function consultarCliente() {
         alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
     }
 }
+
+function getAllClients() {
+	var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'cliente/listar';
+
+	console.log('endPoint: ' + endPoint);
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 0) {
+			console.log('Creando cliente');
+		}
+		if (this.readyState == 1) {
+			console.log('Abriendo cliente');
+		}
+		if (this.readyState == 2) {
+			console.log('Enviando cliente');
+		}
+		if (this.readyState == 3) {
+			console.log('Cargando cliente');
+		}
+		if (this.readyState == 4) {
+			console.log('Operación completa');
+			switch (this.status) {
+				case 200:
+					var res = JSON.parse(xhttp.response);
+					console.log(res);
+
+					var col = [];
+					for (i = 0; i < res.length; i++) {
+						console.log('<---------' + JSON.stringify(res[i]));
+						var tr = document.createElement('tr'); // create a td node
+						for (var key in res[i]) {
+							if (col.indexOf(key) === -1) {
+			                    col.push(key);
+			                }
+						}
+						
+						var table = document.createElement("table");
+						
+						var tr = table.insertRow(-1);                   // TABLE ROW.
+
+						var th = document.createElement("th");      // TABLE HEADER.
+			            th.innerHTML = 'CÉDULA';
+			            tr.appendChild(th);
+
+						var th = document.createElement("th");      // TABLE HEADER.
+			            th.innerHTML = 'DIRECCIÓN';
+			            tr.appendChild(th);
+
+						var th = document.createElement("th");      // TABLE HEADER.
+			            th.innerHTML = 'EMAIL';
+			            tr.appendChild(th);
+
+						var th = document.createElement("th");      // TABLE HEADER.
+			            th.innerHTML = 'NOMBRE';
+			            tr.appendChild(th);
+
+						var th = document.createElement("th");      // TABLE HEADER.
+			            th.innerHTML = 'TELEFONO';
+			            tr.appendChild(th);
+
+						/*
+				        for (var i = 0; i < col.length; i++) {
+				            var th = document.createElement("th");      // TABLE HEADER.
+				            th.innerHTML = col[i];
+				            tr.appendChild(th);
+				        }
+						*/
+				
+				        // ADD JSON DATA TO THE TABLE AS ROWS.
+				        for (var i = 0; i < res.length; i++) {
+				
+				            tr = table.insertRow(-1);
+				
+				            for (var j = 0; j < col.length; j++) {
+				                var tabCell = tr.insertCell(-1);
+				                tabCell.innerHTML = res[i][col[j]];
+				            }
+				        }
+				
+				        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+				        var divContainer = document.getElementById("showData");
+				        divContainer.innerHTML = "";
+				        divContainer.appendChild(table);
+					}
+					break;
+				case 400:
+					console.log('HTTP STATUS BAD REQUEST');
+					clear();
+					break;
+				case 500:
+					console.log('HTTP STATUS SERVER ERROR');
+					clear();
+					break;
+				default:
+					console.log('DEFAULT');
+					clear();
+					break;
+			}
+		}
+	}
+	xhttp.open("GET", endPoint, true);
+	xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+	xhttp.send();
+}

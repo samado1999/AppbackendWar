@@ -2,21 +2,27 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="./css/indexstyle.css" />
+    <link rel="stylesheet" type="text/css" href="./css/loginstyle.css" />
   </head>
 
   <body>
-    <div class="header">
-      <h2>Tienda Genérica</h2>
-    </div>
+    <div id="contenedor">
+      <div id="central">
+        <div id="login">
+          <div class="titulo">Bienvenido a la Tienda Genérica</div>
+          <form>
+            <label>Usuario</label>
+            <input type="text" id="txtUsername" placeholder="Enter your Username" required />
 
-    <ul>
-      <li><a href="Usuarios.html">Usuarios</a></li>
-      <li><a href="Clientes.html">Clientes</a></li>
-      <li><a href="Proveedores.html">Proveedores</a></li>
-      <li><a href="Productos.html">Productos</a></li>
-      <li><a href="Ventas.html">Ventas</a></li>
-      <li><a href="Reportes.html">Reportes</a></li>
-    </ul>
+            <label>Contraseña</label>
+            <input type="password" id="txtPassword" placeholder="Enter your Pasword" required />
+
+            <button type="submit" onclick="loginUser()" >Aceptar</button>
+            <button type="button">Cancelar</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
+  <script type="text/javascript" src="./js/login.js"></script>
 </html>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
 </head>
 
-<body>
+<body onload="Javascript:getAllSales()">
 	<div class="header">
 		<h2>Tienda Genérica</h2>
 	</div>
@@ -19,45 +19,8 @@
 		<li><a href="Ventas.html">Ventas</a></li>
 		<li><a class="active" href="Reportes.html">Reportes</a></li>
 	</ul>
-	<h1>Resportes</h1>
+	<h1 id="center">Lista de ventas por cliente</h1>
+	<p id="showData"></p>
 </body>
-<script type="text/javascript" src="js/user.js"></script>
-
-<body>
-	<center>
-		<h2>Total de Ventas por Cliente</h2>
-	</center>
-</body>
-<table>
-	<tr>
-		<th><strong>Cedula</strong></th>
-		<th><strong>Nombre</strong></th>
-		<th><strong>Valor Total Ventas</strong></th>
-
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
-
-<form>
-	<div>
-		<label> Total Ventas $ </label> <input type="number"
-			name="TotalVentas" id="txtNIT" placeholder="" size="15" required />
-	</div>
-</form>
-
-
+<script type="text/javascript" src="./js/venta.js"></script>
 </html>

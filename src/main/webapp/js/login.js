@@ -54,7 +54,7 @@ function loginUser() {
                         if (res != false) {
                             alert('USUARIO Y CONTRASEÑA CORRECTOS');
                             clear();
-                            window.location.replace("index.html");
+                            window.location.replace("index2.html");
                         } else {
                             alert('USUARIO O CONTRASEÑA INCORRECTOS');
                             clear();

@@ -1,9 +1,12 @@
 package com.ubosque.mintic.tiendavirtual.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +17,9 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo_producto;
 	private Double ivacompra;
-	private Integer nitproveedor;
+	@ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "nitproveedor")
+	private Proveedor nitproveedor;
 	private String nombre_producto;
 	private Double precio_compra;
 	private Double precio_venta;
@@ -35,11 +40,11 @@ public class Producto {
 		this.ivacompra = ivacompra;
 	}
 
-	public Integer getNitproveedor() {
+	public Proveedor getNitproveedor() {
 		return nitproveedor;
 	}
 
-	public void setNitproveedor(Integer nitproveedor) {
+	public void setNitproveedor(Proveedor nitproveedor) {
 		this.nitproveedor = nitproveedor;
 	}
 

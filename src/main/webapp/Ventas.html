@@ -2,129 +2,121 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
 </head>
 
 <body>
-  <div class="header">
-    <h2>Tienda Genérica</h2>
-  </div>
+	<div class="header">
+		<h2>Tienda Genérica</h2>
+	</div>
 
-  <ul>
-    <li><a href="Usuarios.html">Usuarios</a></li>
-    <li><a href="Clientes.html">Clientes</a></li>
-    <li><a href="Proveedores.html">Proveedores</a></li>
-    <li><a href="Productos.html">Productos</a></li>
-    <li><a class="active" href="Ventas.html">Ventas</a></li>
-    <li><a href="Reportes.html">Reportes</a></li>
-  </ul>
-  
-  
-    <form>
-    <div class="form">
+	<ul>
+		<li><a href="Usuarios.html">Usuarios</a></li>
+		<li><a href="Clientes.html">Clientes</a></li>
+		<li><a href="Proveedores.html">Proveedores</a></li>
+		<li><a href="Productos.html">Productos</a></li>
+		<li><a class="active" href="Ventas.html">Ventas</a></li>
+		<li><a href="Reportes.html">Reportes</a></li>
+	</ul>
 
-      <div class="ConsulCed">
-        
-        <div class="cedula">
+	<label>Cedula </label>
+	<input type="text" name="identification" id="txtCedula"
+		placeholder="C.C. " size="15" required />
+	<input type="button" class="registerbtn" onclick="consultarCliente()"
+		value="Consultar" />
+	<label>Cliente </label>
+	<input type="text" name="identification" id="txtName" size="15" required />
+	<label>Consec.</label>
+	<input type="text" name="identification" id="txtNIT" />
+	<form>
+		<div class="form">
+			<div class="row">
+				<div class="ConsultaCod">
+					<table class="TablaCod">
+						<tr>
+							<th>Cod. Producto</th>
+							<th></th>
+							<th>Nombre producto</th>
+							<th>Cant.</th>
+							<th>Vlr. Total</th>
+						</tr>
+						<tr>
+							<td><input type="text" name="fullname" id="txtCodProd1"
+								size="15" /></td>
+							<td><input type="button" class="registerbtn"
+								onclick="consultarProducto1()" value="Consultar" /></td>
+							<td><input type="text" name="fullname" id="txtNameProd1"
+								size="15" /></td>
+							<td><input type="number" name="fullname" id="txtCantidad1"
+								size="15" /></td>
+							<td><input type="number" step="any" name="fullname" id="txtTotal1"
+								size="15" /></td>
+						</tr>
 
-          <label>Cedula </label>
-          <input type="text" name="identification" id="txtNIT" placeholder="C.C. " size="15" required />
-          
-          <input type="button" class="consultbtn" onclick="consultarProveedor()" value="Consultar" />
-        
-          <label>Cliente </label>
-          <input type="text" name="identification" id="txtNIT"  size="15" required />
+						<tr>
+							<td><input type="text" name="fullname" id="txtCodProd2"
+								size="15" /></td>
+							<td><input type="button" class="registerbtn"
+								onclick="consultarProducto2()" value="Consultar" /></td>
+							<td><input type="text" name="fullname" id="txtNameProd2"
+								size="15" /></td>
+							<td><input type="number" name="fullname" id="txtCantidad2"
+								size="15" /></td>
+							<td><input type="text" name="fullname" id="txtTotal2"
+								size="15" /></td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="fullname" id="txtCodProd3"
+								size="15" /></td>
+							<td><input type="button" class="registerbtn"
+								onclick="consultarProducto3()" value="Consultar" /></td>
+							<td><input type="text" name="fullname" id="txtNameProd3"
+								size="15" /></td>
+							<td><input type="number" name="fullname" id="txtCantidad3"
+								size="15" /></td>
+							<td><input type="text" name="fullname" id="txtTotal3"
+								size="15" /></td>
+						</tr>
 
-          <label>Consec.</label>
-          <input type="text" name="identification" id="txtNIT"   />
-        </div>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>Total Venta</td>
+							<td><input type="text" name="fullname" id="txtTotalVenta"
+								size="15" /></td>
+						</tr>
 
-      </div> 
-        
-      <div class="row">
-      <div class="ConsultaCod">
-            <table class="TablaCod">
-              <tr>
-                <th>Cod. Producto</th>
-                <th>        </th>
-                <th>Country</th>
-              </tr>
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor"  size="15"  /></td>
-                <td><input type="button" class="consultbtn" onclick="consultarProveedor()" value="Consultar" /></td>
-                <td><input type="text" name="fullname" id="txtProveedor"  size="15"  /></td>
-              </tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>Total IVA</td>
+							<td><input type="text" name="fullname" id="txtTotalIva"
+								size="15" /></td>
+						</tr>
 
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor"  size="15"  /></td>
-                <td><input type="button" class="consultbtn" onclick="consultarProveedor()" value="Consultar" /></td>
-                <td><input type="text" name="fullname" id="txtProveedor"  size="15"  /></td>
-              </tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><input type="button" class="registerbtn"
+								onclick="confirmar()" value="Confirmar" /></td>
+							<td>Total con IVA</td>
+							<td><input type="text" name="fullname" id="txtTotalFinal"
+								size="15" /></td>
+						</tr>
 
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor"  size="15"  /></td>
-                <td><input type="button" class="consultbtn" onclick="consultarProveedor()" value="Consultar" /></td>
-                <td><input type="text" name="fullname" id="txtProveedor" size="15" /></td>
-              </tr>
+					</table>
+				</div>
 
-            </table>
-      </div>
+			</div>
 
-      <div class="cant-valor"> 
-            <table class="TablaCant">
-              <tr>
-                <th>Cant</th>
-                <th>Vlr. Total</th>
-                
-              </tr>
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor" /></td>
-                
-                <td><input type="text" name="fullname" id="txtProveedor" /></td>
-              </tr>
+		</div>
 
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor" /></td>
-                
-                <td><input type="text" name="fullname" id="txtProveedor"  /></td>
-              </tr>
-
-              <tr>
-                <td><input type="text" name="fullname" id="txtProveedor" /></td>
-                
-                <td><input type="text" name="fullname" id="txtProveedor" ></td>
-              </tr>
-
-            </table>
-
-      </div>
-
-      </div>
-   
-  </div>
-      
-  
-  
-  </div>
-</form>
+	</form>
 
 </body>
-<script type="text/javascript" src="js/user.js"></script>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
-</head>
-  <div class="right"><div class="information">
-        <div class="Cedula">
-          <label> Cedula </label> <input type="number" name="identification" id="txtcèdula" placeholder="Identification " size="15" required />
-          <label>Consultar Cliente<input type="text" name="fullname" id="txtproducto" placeholder="Full Name" size="15" required position=relative/> 
-              
-        </div>
-             
-        
-        </div>
-   <form>
+<script type="text/javascript" src="./js/venta.js"></script>
 </html>

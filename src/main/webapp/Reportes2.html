@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
 </head>
 
-<body>
+<body onload="Javascript:getAllClients()">
 	<div class="header">
 		<h2>Tienda Genérica</h2>
 	</div>
@@ -19,43 +19,8 @@
 		<li><a href="Ventas.html">Ventas</a></li>
 		<li><a class="active" href="Reportes.html">Reportes</a></li>
 	</ul>
-	<h1>Resportes</h1>
+	<h1 id="center">Lista de clientes</h1>
+	<p id="showData"></p>
 </body>
-<script type="text/javascript" src="js/user.js"></script>
-
-	<center>
-		<h2>Lista de clientes</h2>
-	</center>
-</body>
-<table>
-	<tr>
-		<th><strong>Cedula</strong></th>
-		<th><strong>Nombre</strong></th>
-		<th><strong>Correo electronico</strong></th>
-		<th><strong>Direccion</strong></th>
-		<th><strong>Telefono</strong></th>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
-
+<script type="text/javascript" src="./js/cliente.js"></script>
 </html>
