@@ -14,5 +14,8 @@ public interface VentaDAO extends JpaRepository<Venta, Integer>{
 	
 	@Query(value = "SELECT SUM(total_venta) FROM ventas;", nativeQuery = true)
     String getSumVentas();
+	
+	@Query(value = "SELECT * FROM ventas JOIN clientes ON ventas.cedula_cliente=clientes.cedula_cliente GROUP BY ventas.cedula_cliente;", nativeQuery = true)
+    List<Venta> getLastTwentyRecords2();
 
 }

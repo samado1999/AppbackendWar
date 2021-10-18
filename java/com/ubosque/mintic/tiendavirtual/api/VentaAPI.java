@@ -40,4 +40,9 @@ public class VentaAPI {
 		System.out.println("COD VENTA: " + venta.getCodigo_venta());
 		return new ResponseEntity<>(String.valueOf(venta.getCodigo_venta()), HttpStatus.OK);
 	}
+	
+	@GetMapping("/listarClients2")
+	public List<Venta> listarClients2() {
+		return ventaDAO.getLastTwentyRecords2();
+	}
 }

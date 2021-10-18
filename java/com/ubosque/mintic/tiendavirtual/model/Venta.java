@@ -31,6 +31,8 @@ public class Venta {
 	@JoinColumn(name = "cedula_usuario")
 	private Usuario cedula_usuario;
 
+	private Double total_suma;
+
 	public Integer getCodigo_venta() {
 		return codigo_venta;
 	}
@@ -77,6 +79,14 @@ public class Venta {
 
 	public void setCedula_usuario(Usuario cedula_usuario) {
 		this.cedula_usuario = cedula_usuario;
+	}
+
+	public Double getTotal_suma() {
+		return total_suma;
+	}
+
+	public void setTotal_suma(Double total_suma) {
+		this.total_suma = total_suma;
 	}
 
 }
