@@ -1,5 +1,7 @@
 package com.ubosque.mintic.tiendavirtual.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +21,7 @@ public class DetalleVentaAPI {
 	private DetalleVentaDAO detalleVentaDAO;
 	
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
-	public void guardar(@RequestBody DetalleVenta venta) {
-		detalleVentaDAO.save(venta);
+	public void guardar(@RequestBody List<DetalleVenta> detalleVenta) {
+		detalleVentaDAO.saveAll(detalleVenta);
 	}
 }

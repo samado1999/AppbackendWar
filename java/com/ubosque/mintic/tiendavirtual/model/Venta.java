@@ -17,7 +17,7 @@ import org.hibernate.annotations.FetchMode;
 public class Venta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer codigo_venta;
 	private Double ivaventa;
 	private Double total_venta;

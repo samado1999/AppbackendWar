@@ -3,6 +3,8 @@ package com.ubosque.mintic.tiendavirtual.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +19,7 @@ import com.ubosque.mintic.tiendavirtual.model.Venta;
 @RestController // esta es una clase REST
 @RequestMapping("venta")
 public class VentaAPI {
-	
+
 	@Autowired // inyecta la dependencia de todos los métodos del JPA para
 	private VentaDAO ventaDAO;
 
@@ -26,8 +28,16 @@ public class VentaAPI {
 		return ventaDAO.getLastTwentyRecords();
 	}
 	
+	@GetMapping("/sumVentas")
+	public String sumVentas() {
+		return ventaDAO.getSumVentas();
+	}
+
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
-	public void guardar(@RequestBody Venta venta) {
+	public ResponseEntity<String> guardar(@RequestBody Venta venta) {
 		ventaDAO.save(venta);
+
+		System.out.println("COD VENTA: " + venta.getCodigo_venta());
+		return new ResponseEntity<>(String.valueOf(venta.getCodigo_venta()), HttpStatus.OK);
 	}
 }

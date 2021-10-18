@@ -385,118 +385,16 @@ function consultarProducto3() {
 	}
 }
 
-function getAllSales() {
-	var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'venta/listarClients';
-
-	console.log('endPoint: ' + endPoint);
-
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 0) {
-			console.log('Creando cliente');
-		}
-		if (this.readyState == 1) {
-			console.log('Abriendo cliente');
-		}
-		if (this.readyState == 2) {
-			console.log('Enviando cliente');
-		}
-		if (this.readyState == 3) {
-			console.log('Cargando cliente');
-		}
-		if (this.readyState == 4) {
-			console.log('Operación completa');
-			switch (this.status) {
-				case 200:
-					var res = JSON.parse(xhttp.response);
-
-					var resTable = new Object();
-					list = new Array();
-					for (var i = 0; i < res.length; i++) {
-						var resTable = new Object();
-						resTable.cedula_cliente = res[i].cedula_cliente.cedula_cliente;
-						resTable.nombre_cliente = res[i].cedula_cliente.nombre_cliente;
-						resTable.total_venta = res[i].total_venta;
-						list.push(resTable);
-					}
-
-					var col = [];
-					for (i = 0; i < list.length; i++) {
-						console.log('<---------' + JSON.stringify(list[i]));
-						var tr = document.createElement('tr'); // create a td node
-						for (var key in list[i]) {
-							if (col.indexOf(key) === -1) {
-								col.push(key);
-							}
-						}
-
-						var table = document.createElement("table");
-
-						var tr = table.insertRow(-1);                   // TABLE ROW.
-
-						var th = document.createElement("th");      // TABLE HEADER.
-						th.innerHTML = 'CÉDULA';
-						tr.appendChild(th);
-
-						var th = document.createElement("th");      // TABLE HEADER.
-						th.innerHTML = 'NOMBRE';
-						tr.appendChild(th);
-
-						var th = document.createElement("th");      // TABLE HEADER.
-						th.innerHTML = 'VALOR TOTAL VENTAS';
-						tr.appendChild(th);
-
-						/*
-						for (var i = 0; i < col.length; i++) {
-							var th = document.createElement("th");      // TABLE HEADER.
-							th.innerHTML = col[i];
-							tr.appendChild(th);
-						}
-						*/
-
-						// ADD JSON DATA TO THE TABLE AS ROWS.
-						for (var i = 0; i < list.length; i++) {
-
-							tr = table.insertRow(-1);
-
-							for (var j = 0; j < col.length; j++) {
-								var tabCell = tr.insertCell(-1);
-								tabCell.innerHTML = list[i][col[j]];
-							}
-						}
-
-						// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-						var divContainer = document.getElementById("showData");
-						divContainer.innerHTML = "";
-						divContainer.appendChild(table);
-					}
-					break;
-				case 400:
-					console.log('HTTP STATUS BAD REQUEST');
-					clear();
-					break;
-				case 500:
-					console.log('HTTP STATUS SERVER ERROR');
-					clear();
-					break;
-				default:
-					console.log('DEFAULT');
-					clear();
-					break;
-			}
-		}
-	}
-	xhttp.open("GET", endPoint, true);
-	xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-	xhttp.send();
-}
-
 function confirmar() {
-	
+
 	var cant1 = document.getElementById('txtCantidad1');
 	var cant2 = document.getElementById('txtCantidad2');
 	var cant3 = document.getElementById('txtCantidad3');
-	
+
+	var prod1 = document.getElementById("txtNameProd1");
+	var prod2 = document.getElementById("txtNameProd2");
+	var prod3 = document.getElementById("txtNameProd3");
+
 	var totalIva = document.getElementById('txtTotalIva');
 	var totalVenta = document.getElementById('txtTotalVenta');
 	var totalFinal = document.getElementById('txtTotalFinal');
@@ -536,81 +434,82 @@ function confirmar() {
 					case 200:
 						console.log('HTTP STATUS OK');
 						var res = xhttp.response;
-						console.log(JSON.stringify(res));
-						
+						console.log('RESPUESTA: ' + res);
+
+						console.log(document.getElementById('txtCantidad' + 1));
+
+						var endPointDetail = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'detalleVenta/guardar';
+
+						console.log('endPoint: ' + endPointDetail);
+
 						var ciclos = 0;
-						if (cant1.value > 0) {
+						if (prod1.value != 0) {
 							ciclos = ciclos + 1;
 						}
-						if (cant2.value > 0) {
+						if (prod2.value != 0) {
 							ciclos = ciclos + 1;
 						}
-						if (cant3.value > 0) {
+						if (prod3.value != 0) {
 							ciclos = ciclos + 1;
 						}
-												
+						
+						var list = [];
 						for (var i = 0; i < ciclos; i++) {
-							console.log(i + 1)
+							const detVen = new Object();
+							detVen.cantidad_producto = (document.getElementById('txtCantidad' + (i + 1))).value;
+							detVen.valor_total = totalFinal.value;
+							detVen.valor_venta =  totalVenta.value;
+							detVen.valoriva = totalIva.value;
+
+							const vent = new Object();
+							vent.codigo_venta = res;
+							detVen.codigo_venta = vent;
+
+							const prod = new Object();
+							prod.codigo_producto = document.getElementById("txtCodProd" + (i + 1)).value;
+							detVen.codigo_producto = prod;
+							
+							console.log(JSON.stringify(detVen));
+							list.push(detVen);
 						}
 						
-						/*
-						var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'detalleVenta/guardar';
-
-						console.log('endPoint: ' + endPoint);
-
-						const detVen = new Object();
-						detVen.cantidad_producto = totalIva.value;
-						detVen.valor_total = totalVenta.value;
-						detVen.valor_venta = totalFinal.value;
-						detVen.valoriva = totalFinal.value;
-
-						const vent = new Object();
-						vent.codigo_venta = ced.value;
-						detVen.cedula_cliente = client;
-						
-						const prod = new Object();
-						prod.codigo_producto = ced.value;
-						detVen.cedula_cliente = client;
-
-						var xhttp = new XMLHttpRequest();
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 0) {
-								console.log('Creando cliente');
-							}
-							if (this.readyState == 1) {
-								console.log('Abriendo cliente');
-							}
-							if (this.readyState == 2) {
-								console.log('Enviando cliente');
-							}
-							if (this.readyState == 3) {
-								console.log('Cargando cliente');
-							}
-							if (this.readyState == 4) {
-								console.log('Operación completa');
-								switch (this.status) {
-									case 200:
-										console.log('HTTP STATUS OK');
-
-										break;
-									case 400:
-										console.log('HTTP STATUS BAD REQUEST');
-										break;
-									case 500:
-										console.log('HTTP STATUS SERVER ERROR');
-										break;
-									default:
-										console.log('DEFAULT');
-										break;
-								}
-							}
+						var xhttpDetail = new XMLHttpRequest();
+						xhttpDetail.onreadystatechange = function() {
+						    if (this.readyState == 0) {
+						        console.log('Creando cliente');
+						    }
+						    if (this.readyState == 1) {
+						        console.log('Abriendo cliente');
+						    }
+						    if (this.readyState == 2) {
+						        console.log('Enviando cliente');
+						    }
+						    if (this.readyState == 3) {
+						        console.log('Cargando cliente');
+						    }
+						    if (this.readyState == 4) {
+						        console.log('Operación completa');
+						        switch (this.status) {
+						            case 200:
+						                console.log('HTTP STATUS OK');
+						                break;
+						            case 400:
+						                console.log('HTTP STATUS BAD REQUEST');
+						                break;
+						            case 500:
+						                console.log('HTTP STATUS SERVER ERROR');
+						                break;
+						            default:
+						                console.log('DEFAULT');
+						                break;
+						        }
+						    }
 						};
-
-						xhttp.open("POST", endPoint, true);
-						xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-						xhttp.send(JSON.stringify(vent));
-						this.clear();
-						*/
+						
+						xhttpDetail.open("POST", endPointDetail, true);
+						xhttpDetail.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+						xhttpDetail.send(JSON.stringify(list));
+						
 						break;
 					case 400:
 						console.log('HTTP STATUS BAD REQUEST');
