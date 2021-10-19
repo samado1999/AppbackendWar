@@ -2,67 +2,73 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" type="text/css" href="./css/indexstyle.css" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/indexstyle.css" />
 </head>
 
 <body>
-  <div class="header">
-    <h2>Tienda Genérica</h2>
-  </div>
+	<div class="header">
+		<h2>Tienda Genérica</h2>
+	</div>
 
-  <ul>
-    <li><a href="Usuarios.html">Usuarios</a></li>
-    <li><a class="active" href="Clientes.html">Clientes</a></li>
-    <li><a href="Proveedores.html">Proveedores</a></li>
-    <li><a href="Productos.html">Productos</a></li>
-    <li><a href="Ventas.html">Ventas</a></li>
-    <li><a href="Reportes.html">Reportes</a></li>
-  </ul>
-  <div class="form">
-    <form>
-      <div class="information">
-        <div class="cedula">
-          <label> Cédula </label>
-          <input type="number" name="identification" id="txtCedula" placeholder="Identification " size="15" required />
-        </div>
-        <div class="name">
-          <label> Nombre Completo: </label>
-          <input type="text" name="fullname" id="txtName" placeholder="Full Name" size="15" required />
-        </div>
-        <div class="email">
-          <label> Dirección: </label>
-          <input type="text" name="email" id="txtDireccion" placeholder="Email" size="15" required />
-        </div>
-      </div>
-      <div class="user">
-        <div class="user-text">
-          <label> Teléfono: </label>
-          <input type="text" name="username" id="txtTelefono" placeholder="Username" size="15" required />
-        </div>
-        <div class="pasword">
-          <label> Correo Electrónico: </label>
-          <input type="text" name="password" id="txtCorreo" placeholder="Middlename" size="15" required />
-        </div>
-      </div>
-  </div>
+	<ul>
+		<li><a href="Usuarios.html">Usuarios</a></li>
+		<li><a class="active" href="Clientes.html">Clientes</a></li>
+		<li><a href="Proveedores.html">Proveedores</a></li>
+		<li><a href="Productos.html">Productos</a></li>
+		<li><a href="Ventas.html">Ventas</a></li>
+		<li><a href="Reportes.html">Reportes</a></li>
+	</ul>
+	<div class="form">
+		<form>
+			<div class="information">
+				<div class="cedula">
+					<label> Cédula </label> <input type="number" name="identification"
+						id="txtCedula" placeholder="Identification " size="15" required />
+				</div>
+				<div class="name">
+					<label> Nombre Completo: </label> <input type="text"
+						name="fullname" id="txtName" placeholder="Full Name" size="15"
+						required />
+				</div>
+				<div class="email">
+					<label> Dirección: </label> <input type="text" name="email"
+						id="txtDireccion" placeholder="Email" size="15" required />
+				</div>
+			</div>
+			<div class="user">
+				<div class="user-text">
+					<label> Teléfono: </label> <input type="text" name="username"
+						id="txtTelefono" placeholder="Username" size="15" required />
+				</div>
+				<div class="pasword">
+					<label> Correo Electrónico: </label> <input type="text"
+						name="password" id="txtCorreo" placeholder="Middlename" size="15"
+						required />
+				</div>
+			</div>
+	</div>
 
-  <div class="button">
-    <div>
-      <input type="button" class="registerbtn" onclick="consultarCliente()" value="Consultar" />
-    </div>
-    <div>
-      <input type="button" class="registerbtn" onclick="postCliente()" value="Crear" />
-    </div>
-    <div>
-      <input type="button" class="registerbtn" onclick="updateCliente()" value="Actualizar" />
-    </div>
-    <div>
-      <input type="button" class="registerbtn" onclick="delCliente()" value="Eliminar" />
-    </div>
-  </div>
-  </form>
-  </div>
+	<div class="button">
+		<div>
+			<input type="button" class="registerbtn" onclick="consultarCliente()"
+				value="Consultar" />
+		</div>
+		<div>
+			<input type="button" class="registerbtn" onclick="postCliente()"
+				value="Crear" />
+		</div>
+		<div>
+			<input type="button" class="registerbtn" onclick="updateCliente()"
+				value="Actualizar" />
+		</div>
+		<div>
+			<input type="button" class="registerbtn" onclick="delCliente()"
+				value="Eliminar" />
+		</div>
+	</div>
+	</form>
+	</div>
 </body>
 <script type="text/javascript" src="./js/cliente.js"></script>
 </html>

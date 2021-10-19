@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<meta charset="UTF-8" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/indexstyle.css" />
 </head>
 
@@ -26,9 +26,10 @@
 	<input type="button" class="registerbtn" onclick="consultarCliente()"
 		value="Consultar" />
 	<label>Cliente </label>
-	<input type="text" name="identification" id="txtName" size="15" required />
+	<input type="text" name="identification" id="txtName" size="15"
+		readonly />
 	<label>Consec.</label>
-	<input type="text" name="identification" id="txtNIT" />
+	<input type="text" name="identification" id="txtConsecutivo" readonly />
 	<form>
 		<div class="form">
 			<div class="row">
@@ -47,11 +48,11 @@
 							<td><input type="button" class="registerbtn"
 								onclick="consultarProducto1()" value="Consultar" /></td>
 							<td><input type="text" name="fullname" id="txtNameProd1"
-								size="15" /></td>
+								size="15" readonly /></td>
 							<td><input type="number" name="fullname" id="txtCantidad1"
-								size="15" /></td>
-							<td><input type="number" step="any" name="fullname" id="txtTotal1"
-								size="15" /></td>
+								size="15" required /></td>
+							<td><input type="number" step="any" name="fullname"
+								id="txtTotal1" size="15" readonly /></td>
 						</tr>
 
 						<tr>
@@ -60,24 +61,24 @@
 							<td><input type="button" class="registerbtn"
 								onclick="consultarProducto2()" value="Consultar" /></td>
 							<td><input type="text" name="fullname" id="txtNameProd2"
-								size="15" /></td>
+								size="15" readonly /></td>
 							<td><input type="number" name="fullname" id="txtCantidad2"
-								size="15" /></td>
+								size="15" required /></td>
 							<td><input type="text" name="fullname" id="txtTotal2"
-								size="15" /></td>
+								size="15" readonly /></td>
 						</tr>
-						
+
 						<tr>
 							<td><input type="text" name="fullname" id="txtCodProd3"
 								size="15" /></td>
 							<td><input type="button" class="registerbtn"
 								onclick="consultarProducto3()" value="Consultar" /></td>
 							<td><input type="text" name="fullname" id="txtNameProd3"
-								size="15" /></td>
+								size="15" readonly /></td>
 							<td><input type="number" name="fullname" id="txtCantidad3"
-								size="15" /></td>
+								size="15" required /></td>
 							<td><input type="text" name="fullname" id="txtTotal3"
-								size="15" /></td>
+								size="15" readonly /></td>
 						</tr>
 
 						<tr>
@@ -86,7 +87,7 @@
 							<td></td>
 							<td>Total Venta</td>
 							<td><input type="text" name="fullname" id="txtTotalVenta"
-								size="15" /></td>
+								size="15" readonly /></td>
 						</tr>
 
 						<tr>
@@ -95,7 +96,7 @@
 							<td></td>
 							<td>Total IVA</td>
 							<td><input type="text" name="fullname" id="txtTotalIva"
-								size="15" /></td>
+								size="15" readonly /></td>
 						</tr>
 
 						<tr>
@@ -105,7 +106,7 @@
 								onclick="confirmar()" value="Confirmar" /></td>
 							<td>Total con IVA</td>
 							<td><input type="text" name="fullname" id="txtTotalFinal"
-								size="15" /></td>
+								size="15" readonly /></td>
 						</tr>
 
 					</table>

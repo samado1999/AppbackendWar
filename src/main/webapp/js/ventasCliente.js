@@ -29,7 +29,7 @@ function getAllSales() {
 						var resTable = new Object();
 						resTable.cedula_cliente = res[i].cedula_cliente.cedula_cliente;
 						resTable.nombre_cliente = res[i].cedula_cliente.nombre_cliente;
-						resTable.total_venta = res[i].total_venta;
+						resTable.total_venta = res[i].total_suma;
 						list.push(resTable);
 					}
 

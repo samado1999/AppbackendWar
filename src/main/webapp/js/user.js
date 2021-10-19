@@ -65,15 +65,20 @@ function postUser() {
 				switch (this.status) {
 					case 200:
 						console.log('HTTP STATUS OK');
+						alert('Usuario creado');
+						clear();
 						break;
 					case 400:
 						console.log('HTTP STATUS BAD REQUEST');
+						alert('Usuario no creado');
 						break;
 					case 500:
 						console.log('HTTP STATUS SERVER ERROR');
+						alert('Usuario no creado');
 						break;
 					default:
 						console.log('DEFAULT');
+						alert('Usuario no creado');
 						break;
 				}
 			}
@@ -84,7 +89,7 @@ function postUser() {
 		xhttp.send(jsonRequest);
 		this.clear();
 	} else {
-		alert('LOS DATOS NO ESTÁN COMPLETOS');
+		alert('Los datos no están completos');
 	}
 }
 
@@ -145,17 +150,19 @@ function delUser() {
 							clear();
 						} else {
 							alert('Usuario no eliminado');
-							clear();
 						}
 						break;
 					case 400:
 						console.log('HTTP STATUS BAD REQUEST');
+						alert('Usuario no eliminado');
 						break;
 					case 500:
 						console.log('HTTP STATUS SERVER ERROR');
+						alert('Usuario no eliminado');
 						break;
 					default:
 						console.log('DEFAULT');
+						alert('Usuario no eliminado');
 						break;
 				}
 			}
@@ -165,7 +172,7 @@ function delUser() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE ESTAR VACÍA');
+		alert('La identificación no puede estar vacía');
 	}
 }
 
@@ -202,17 +209,21 @@ function updateUser() {
 				console.log('Operación completa');
 				switch (this.status) {
 					case 200:
-						alert('USUARIO ACTUALIZADO CORRECTAMENTE');
+						alert('Usuario actualizado');
+						clear();
 						console.log('HTTP STATUS OK');
 						break;
 					case 400:
 						console.log('HTTP STATUS BAD REQUEST');
+						alert('Usuario no actualizado');
 						break;
 					case 500:
 						console.log('HTTP STATUS SERVER ERROR');
+						alert('Usuario no actualizado');
 						break;
 					default:
 						console.log('DEFAULT');
+						alert('Usuario no actualizado');
 						break;
 				}
 			}
@@ -221,10 +232,9 @@ function updateUser() {
 		xhttp.open("PUT", endPoint, true);
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send(jsonRequest);
-
 		clear();
 	} else {
-		alert('LOS DATOS NO ESTÁN COMPLETOS');
+		alert('Los datos no están completos');
 	}
 }
 
@@ -266,23 +276,23 @@ function consultarUser() {
 							username.value = res.usuario;
 							var password = document.getElementById("txtPassword");
 							password.value = res.password;
+							alert('Usuario encontrado');
 						} else {
-							alert('USUARIO NO ENCONTRADO');
-							clear();
+							alert('Usuario no encontrado');
 						}
 						break;
 					case 400:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Usuario no encontrado');
 						console.log('HTTP STATUS BAD REQUEST');
 						clear();
 						break;
 					case 500:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Usuario no encontrado');
 						console.log('HTTP STATUS SERVER ERROR');
 						clear();
 						break;
 					default:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Usuario no encontrado');
 						console.log('DEFAULT');
 						clear();
 						break;
@@ -293,7 +303,7 @@ function consultarUser() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
+		alert('La identificación no puede ser nula');
 	}
 }
 
@@ -329,57 +339,57 @@ function getAllUsers() {
 						var tr = document.createElement('tr'); // create a td node
 						for (var key in res[i]) {
 							if (col.indexOf(key) === -1) {
-			                    col.push(key);
-			                }
+								col.push(key);
+							}
 						}
-						
+
 						var table = document.createElement("table");
-						
+
 						var tr = table.insertRow(-1);                   // TABLE ROW.
 
 						var th = document.createElement("th");      // TABLE HEADER.
-			            th.innerHTML = 'CÉDULA';
-			            tr.appendChild(th);
+						th.innerHTML = 'CÉDULA';
+						tr.appendChild(th);
 
 						var th = document.createElement("th");      // TABLE HEADER.
-			            th.innerHTML = 'EMAIL';
-			            tr.appendChild(th);
+						th.innerHTML = 'EMAIL';
+						tr.appendChild(th);
 
 						var th = document.createElement("th");      // TABLE HEADER.
-			            th.innerHTML = 'NOMBRE USUARIO';
-			            tr.appendChild(th);
+						th.innerHTML = 'NOMBRE USUARIO';
+						tr.appendChild(th);
 
 						var th = document.createElement("th");      // TABLE HEADER.
-			            th.innerHTML = 'CONTRASEÑA';
-			            tr.appendChild(th);
+						th.innerHTML = 'CONTRASEÑA';
+						tr.appendChild(th);
 
 						var th = document.createElement("th");      // TABLE HEADER.
-			            th.innerHTML = 'USUARIO';
-			            tr.appendChild(th);
+						th.innerHTML = 'USUARIO';
+						tr.appendChild(th);
 
 						/*
-				        for (var i = 0; i < col.length; i++) {
-				            var th = document.createElement("th");      // TABLE HEADER.
-				            th.innerHTML = col[i];
-				            tr.appendChild(th);
-				        }
+						for (var i = 0; i < col.length; i++) {
+							var th = document.createElement("th");      // TABLE HEADER.
+							th.innerHTML = col[i];
+							tr.appendChild(th);
+						}
 						*/
-				
-				        // ADD JSON DATA TO THE TABLE AS ROWS.
-				        for (var i = 0; i < res.length; i++) {
-				
-				            tr = table.insertRow(-1);
-				
-				            for (var j = 0; j < col.length; j++) {
-				                var tabCell = tr.insertCell(-1);
-				                tabCell.innerHTML = res[i][col[j]];
-				            }
-				        }
-				
-				        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-				        var divContainer = document.getElementById("showData");
-				        divContainer.innerHTML = "";
-				        divContainer.appendChild(table);
+
+						// ADD JSON DATA TO THE TABLE AS ROWS.
+						for (var i = 0; i < res.length; i++) {
+
+							tr = table.insertRow(-1);
+
+							for (var j = 0; j < col.length; j++) {
+								var tabCell = tr.insertCell(-1);
+								tabCell.innerHTML = res[i][col[j]];
+							}
+						}
+
+						// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+						var divContainer = document.getElementById("showData");
+						divContainer.innerHTML = "";
+						divContainer.appendChild(table);
 					}
 					break;
 				case 400:

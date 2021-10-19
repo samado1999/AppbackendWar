@@ -36,7 +36,7 @@ public class ClienteAPI {
 
 	@DeleteMapping("/eliminar/{id}")
 	public Boolean eliminar(@PathVariable("id") Integer id) {
-		if (!this.listar(id).isEmpty()) {
+		if (this.listar(id).isPresent()) {
 			clienteDAO.deleteById(id);
 			return true;
 		} else {

@@ -22,6 +22,10 @@ public class DetalleVentaAPI {
 	
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
 	public void guardar(@RequestBody List<DetalleVenta> detalleVenta) {
-		detalleVentaDAO.saveAll(detalleVenta);
+		try {
+			detalleVentaDAO.saveAll(detalleVenta);
+		} catch (Exception e) {
+			
+		}
 	}
 }

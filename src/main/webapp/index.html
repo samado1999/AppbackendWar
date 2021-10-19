@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="./css/loginstyle.css" />
-  </head>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/loginstyle.css" />
+</head>
 
-  <body>
-    <div id="contenedor">
-      <div id="central">
-        <div id="login">
-          <div class="titulo">Bienvenido a la Tienda Genérica</div>
-          <form>
-            <label>Usuario</label>
-            <input type="text" id="txtUsername" placeholder="Enter your Username" required />
+<body>
+	<div id="contenedor">
+		<div id="central">
+			<div id="login">
+				<div class="titulo">Bienvenido a la Tienda Genérica</div>
+				<form>
+					<label>Usuario</label> <input type="text" id="txtUsername"
+						placeholder="Enter your Username" required /> <label>Contraseña</label>
+					<input type="password" id="txtPassword"
+						placeholder="Enter your Pasword" required />
 
-            <label>Contraseña</label>
-            <input type="password" id="txtPassword" placeholder="Enter your Pasword" required />
-
-            <button type="submit" onclick="loginUser()" >Aceptar</button>
-            <button type="button">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script type="text/javascript" src="./js/login.js"></script>
+					<button type="submit" onclick="loginUser()">Aceptar</button>
+					<button type="button">Cancelar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="./js/login.js"></script>
 </html>

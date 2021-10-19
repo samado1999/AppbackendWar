@@ -36,7 +36,7 @@ public class ProveedorAPI {
 
 	@DeleteMapping("/eliminar/{id}")
 	public Boolean eliminar(@PathVariable("id") Integer id) {
-		if (!this.listar(id).isEmpty()) {
+		if (this.listar(id).isPresent()) {
 			proveedorDAO.deleteById(id);
 			return true;
 		} else {

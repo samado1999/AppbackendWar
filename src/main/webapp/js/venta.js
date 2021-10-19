@@ -66,12 +66,7 @@ change3.addEventListener("input", function() {
 });
 
 function clear() {
-	/*
-	var cedula = document.getElementById("txtCedula");
-	cedula.value = '';
-	var direccion = document.getElementById("txtName");
-	direccion.value = '';
-	*/
+
 }
 
 function validar() {
@@ -110,25 +105,22 @@ function consultarCliente() {
 							cedula.value = res.cedula_cliente;
 							var nombre = document.getElementById("txtName");
 							nombre.value = res.nombre_cliente;
+							alert('Cliente encontrado');
 						} else {
-							alert('USUARIO NO ENCONTRADO');
-							clear();
+							alert('Cliente no encontrado');
 						}
 						break;
 					case 400:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Cliente no encontrado');
 						console.log('HTTP STATUS BAD REQUEST');
-						clear();
 						break;
 					case 500:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Cliente no encontrado');
 						console.log('HTTP STATUS SERVER ERROR');
-						clear();
 						break;
 					default:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Cliente no encontrado');
 						console.log('DEFAULT');
-						clear();
 						break;
 				}
 			}
@@ -137,15 +129,17 @@ function consultarCliente() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
+		alert('La cédula de cliente es vacía');
 	}
 }
 
 // http://localhost:8080/Grupo02PonySalvaje/producto/listarById/4
 function consultarProducto1() {
 	codProd1 = document.getElementById("txtCodProd1").value;
+	codProd2 = document.getElementById("txtCodProd2").value;
+	codProd3 = document.getElementById("txtCodProd3").value;
 	// var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-	if (codProd1 !== '') {
+	if (codProd1 !== '' && codProd2 == '' && codProd2 == '') {
 		var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/listarById/' + codProd1;
 
 		console.log('endPoint: ' + endPoint);
@@ -192,23 +186,24 @@ function consultarProducto1() {
 
 							var totalFinal = document.getElementById('txtTotalFinal');
 							totalFinal.value = +totalVenta.value + +totalIva.value;
+							alert('Producto #1 encontrado');
 						} else {
-							alert('USUARIO NO ENCONTRADO');
+							alert('Producto #1 no encontrado');
 							// clear();
 						}
 						break;
 					case 400:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #1 no encontrado');
 						console.log('HTTP STATUS BAD REQUEST');
 						// clear();
 						break;
 					case 500:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #1 no encontrado');
 						console.log('HTTP STATUS SERVER ERROR');
 						// clear();
 						break;
 					default:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #1 no encontrado');
 						console.log('DEFAULT');
 						// clear();
 						break;
@@ -219,14 +214,16 @@ function consultarProducto1() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
+		alert('El código de producto #1 es vacío o llene los productos en orden');
 	}
 }
 
 function consultarProducto2() {
+	codProd1 = document.getElementById("txtCodProd1").value;
 	codProd2 = document.getElementById("txtCodProd2").value;
+	codProd3 = document.getElementById("txtCodProd3").value;
 	// var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-	if (codProd2 !== '') {
+	if (codProd1 !== '' && codProd2 !== '' && codProd3 == '') {
 		var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/listarById/' + codProd2;
 
 		console.log('endPoint: ' + endPoint);
@@ -273,23 +270,24 @@ function consultarProducto2() {
 
 							var totalFinal = document.getElementById('txtTotalFinal');
 							totalFinal.value = +totalVenta.value + +totalIva.value;
+							alert('Producto #2 encontrado');
 						} else {
-							alert('USUARIO NO ENCONTRADO');
+							alert('Producto #2 no encontrado');
 							// clear();
 						}
 						break;
 					case 400:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #2 no encontrado');
 						console.log('HTTP STATUS BAD REQUEST');
 						// clear();
 						break;
 					case 500:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #2 no encontrado');
 						console.log('HTTP STATUS SERVER ERROR');
 						// clear();
 						break;
 					default:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #2 no encontrado');
 						console.log('DEFAULT');
 						// clear();
 						break;
@@ -300,14 +298,16 @@ function consultarProducto2() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
+		alert('El código de producto #2 es vacío o llene los productos en orden');
 	}
 }
 
 function consultarProducto3() {
+	codProd1 = document.getElementById("txtCodProd1").value;
+	codProd2 = document.getElementById("txtCodProd2").value;
 	codProd3 = document.getElementById("txtCodProd3").value;
 	// var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
-	if (codProd3 !== '') {
+	if (codProd1 !== '' && codProd2 !== '' && codProd3 !== '') {
 		var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'producto/listarById/' + codProd3;
 
 		console.log('endPoint: ' + endPoint);
@@ -354,23 +354,24 @@ function consultarProducto3() {
 
 							var totalFinal = document.getElementById('txtTotalFinal');
 							totalFinal.value = +totalVenta.value + +totalIva.value;
+							alert('Producto #3 encontrado');
 						} else {
-							alert('USUARIO NO ENCONTRADO');
+							alert('Producto #3 no encontrado');
 							// clear();
 						}
 						break;
 					case 400:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #3 no encontrado');
 						console.log('HTTP STATUS BAD REQUEST');
 						// clear();
 						break;
 					case 500:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #3 no encontrado');
 						console.log('HTTP STATUS SERVER ERROR');
 						// clear();
 						break;
 					default:
-						alert('USUARIO NO ENCONTRADO');
+						alert('Producto #3 no encontrado');
 						console.log('DEFAULT');
 						// clear();
 						break;
@@ -381,15 +382,15 @@ function consultarProducto3() {
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send();
 	} else {
-		alert('LA IDENTIFICACIÓN NO PUEDE SER NULA');
+		alert('El código de producto #3 es vacío o llene los productos en orden');
 	}
 }
 
 function confirmar() {
 
-	var cant1 = document.getElementById('txtCantidad1');
-	var cant2 = document.getElementById('txtCantidad2');
-	var cant3 = document.getElementById('txtCantidad3');
+	var txtCodProd1 = document.getElementById("txtCodProd1").value;
+	var txtCodProd2 = document.getElementById("txtCodProd2").value;
+	var txtCodProd3 = document.getElementById("txtCodProd3").value;
 
 	var prod1 = document.getElementById("txtNameProd1");
 	var prod2 = document.getElementById("txtNameProd2");
@@ -399,7 +400,7 @@ function confirmar() {
 	var totalVenta = document.getElementById('txtTotalVenta');
 	var totalFinal = document.getElementById('txtTotalFinal');
 	var ced = document.getElementById('txtCedula');
-	if (totalIva.value > 0 && totalVenta.value > 0 && totalFinal.value > 0 && ced != 0) {
+	if (totalIva.value > 0 && totalVenta.value > 0 && totalFinal.value > 0 && ced.value != '' && (txtCodProd1 || txtCodProd2 || txtCodProd3)) {
 		// var endPoint = document.URL.substr(0, document.URL.indexOf("/", 8) + 1) + 'usuario/guardar';
 		var endPoint = document.URL.substr(0, document.URL.indexOf("/" + 1, 8) + 1) + 'venta/guardar';
 
@@ -433,6 +434,7 @@ function confirmar() {
 				switch (this.status) {
 					case 200:
 						console.log('HTTP STATUS OK');
+						alert('Venta generada');
 						var res = xhttp.response;
 						console.log('RESPUESTA: ' + res);
 
@@ -443,22 +445,24 @@ function confirmar() {
 						console.log('endPoint: ' + endPointDetail);
 
 						var ciclos = 0;
-						if (prod1.value != 0) {
+						if (txtCodProd1 != '' && prod1.value != '') {
 							ciclos = ciclos + 1;
 						}
-						if (prod2.value != 0) {
+						if (txtCodProd2 != '' && prod2.value != '') {
 							ciclos = ciclos + 1;
 						}
-						if (prod3.value != 0) {
+						if (txtCodProd3 != '' && prod3.value != '') {
 							ciclos = ciclos + 1;
 						}
 						
+						console.log('<-------CICLOS: ' + ciclos);
+
 						var list = [];
 						for (var i = 0; i < ciclos; i++) {
 							const detVen = new Object();
 							detVen.cantidad_producto = (document.getElementById('txtCantidad' + (i + 1))).value;
 							detVen.valor_total = totalFinal.value;
-							detVen.valor_venta =  totalVenta.value;
+							detVen.valor_venta = totalVenta.value;
 							detVen.valoriva = totalIva.value;
 
 							const vent = new Object();
@@ -468,56 +472,66 @@ function confirmar() {
 							const prod = new Object();
 							prod.codigo_producto = document.getElementById("txtCodProd" + (i + 1)).value;
 							detVen.codigo_producto = prod;
-							
+
 							console.log(JSON.stringify(detVen));
 							list.push(detVen);
 						}
-						
+						console.log('<----------LISTA: ' + list);
+
 						var xhttpDetail = new XMLHttpRequest();
 						xhttpDetail.onreadystatechange = function() {
-						    if (this.readyState == 0) {
-						        console.log('Creando cliente');
-						    }
-						    if (this.readyState == 1) {
-						        console.log('Abriendo cliente');
-						    }
-						    if (this.readyState == 2) {
-						        console.log('Enviando cliente');
-						    }
-						    if (this.readyState == 3) {
-						        console.log('Cargando cliente');
-						    }
-						    if (this.readyState == 4) {
-						        console.log('Operación completa');
-						        switch (this.status) {
-						            case 200:
-						                console.log('HTTP STATUS OK');
-						                break;
-						            case 400:
-						                console.log('HTTP STATUS BAD REQUEST');
-						                break;
-						            case 500:
-						                console.log('HTTP STATUS SERVER ERROR');
-						                break;
-						            default:
-						                console.log('DEFAULT');
-						                break;
-						        }
-						    }
+							if (this.readyState == 0) {
+								console.log('Creando cliente');
+							}
+							if (this.readyState == 1) {
+								console.log('Abriendo cliente');
+							}
+							if (this.readyState == 2) {
+								console.log('Enviando cliente');
+							}
+							if (this.readyState == 3) {
+								console.log('Cargando cliente');
+							}
+							if (this.readyState == 4) {
+								console.log('Operación completa');
+								switch (this.status) {
+									case 200:
+										alert('Detalles de venta generados');
+										console.log('HTTP STATUS OK');
+										cleanAll();
+										break;
+									case 400:
+										alert('Detalles de venta no generados');
+										console.log('HTTP STATUS BAD REQUEST');
+										break;
+									case 500:
+										alert('Detalles de venta no generados');
+										console.log('HTTP STATUS SERVER ERROR');
+										break;
+									default:
+										alert('Detalles de venta no generados');
+										console.log('DEFAULT');
+										break;
+								}
+							}
 						};
-						
+
 						xhttpDetail.open("POST", endPointDetail, true);
 						xhttpDetail.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 						xhttpDetail.send(JSON.stringify(list));
-						
+						var con = document.getElementById("txtConsecutivo");
+						con.value = res;
 						break;
 					case 400:
+						alert('Venta no generada');
 						console.log('HTTP STATUS BAD REQUEST');
 						break;
 					case 500:
+						alert('Venta no generada');
 						console.log('HTTP STATUS SERVER ERROR');
 						break;
 					default:
+						alert('Venta no generada');
 						console.log('DEFAULT');
 						break;
 				}
@@ -527,8 +541,45 @@ function confirmar() {
 		xhttp.open("POST", endPoint, true);
 		xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 		xhttp.send(JSON.stringify(vent));
-		this.clear();
+		//
 	} else {
-		alert('LOS DATOS NO ESTÁN COMPLETOS');
+		alert('Los datos no están completos');
 	}
+}
+
+function cleanAll() {
+	var txtCedula = document.getElementById("txtCedula");
+	txtCedula.value = '';
+	var txtName = document.getElementById("txtName");
+	txtName.value = '';
+	var txtCodProd1 = document.getElementById("txtCodProd1");
+	txtCodProd1.value = '';
+	var txtCodProd2 = document.getElementById("txtCodProd2");
+	txtCodProd2.value = '';
+	var txtCodProd3 = document.getElementById("txtCodProd3");
+	txtCodProd3.value = '';
+	var txtNameProd1 = document.getElementById("txtNameProd1");
+	txtNameProd1.value = '';
+	var txtNameProd2 = document.getElementById("txtNameProd2");
+	txtNameProd2.value = '';
+	var txtNameProd3 = document.getElementById("txtNameProd3");
+	txtNameProd3.value = '';
+	var txtCantidad1 = document.getElementById("txtCantidad1");
+	txtCantidad1.value = '';
+	var txtCantidad2 = document.getElementById("txtCantidad2");
+	txtCantidad2.value = '';
+	var txtCantidad3 = document.getElementById("txtCantidad3");
+	txtCantidad3.value = '';
+	var txtTotal1 = document.getElementById("txtTotal1");
+	txtTotal1.value = '';
+	var txtTotal2 = document.getElementById("txtTotal2");
+	txtTotal2.value = '';
+	var txtTotal3 = document.getElementById("txtTotal3");
+	txtTotal3.value = '';
+	var txtTotalVenta = document.getElementById("txtTotalVenta");
+	txtTotalVenta.value = '';
+	var txtTotalIva = document.getElementById("txtTotalIva");
+	txtTotalIva.value = '';
+	var txtTotalFinal = document.getElementById("txtTotalFinal");
+	txtTotalFinal.value = '';
 }

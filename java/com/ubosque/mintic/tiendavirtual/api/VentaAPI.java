@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ubosque.mintic.tiendavirtual.dao.ComprasCliente;
 import com.ubosque.mintic.tiendavirtual.dao.VentaDAO;
 import com.ubosque.mintic.tiendavirtual.model.Venta;
 
@@ -22,10 +23,14 @@ public class VentaAPI {
 
 	@Autowired // inyecta la dependencia de todos los métodos del JPA para
 	private VentaDAO ventaDAO;
+	
+	private ComprasCliente comprasCliente;
 
 	@GetMapping("/listarClients")
 	public List<Venta> listarClients() {
-		return ventaDAO.getLastTwentyRecords();
+		comprasCliente = new ComprasCliente();
+		return comprasCliente.list();
+		// return ventaDAO.getLastTwentyRecords();
 	}
 	
 	@GetMapping("/sumVentas")
