@@ -14,11 +14,10 @@ import javax.persistence.Table;
 public class Producto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo_producto;
 	private Double ivacompra;
-	@ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "nitproveedor")
+	@ManyToOne(cascade = { CascadeType.REMOVE, CascadeType.MERGE })
+	@JoinColumn(name = "nitproveedor")
 	private Proveedor nitproveedor;
 	private String nombre_producto;
 	private Double precio_compra;

@@ -6,8 +6,6 @@ import com.ubosque.mintic.tiendavirtual.model.Producto;
 import java.util.List;
 import java.util.Optional;
 
-// import com.ubosque.mintic.tiendavirtual.dao.ProductoDAO;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +16,12 @@ public class ProductoAPI {
 
 	@Autowired // inyecta la dependencia de todos los métodos del JPA para
 	private ProductoDAO productoDAO;
-	
-	
+
 	@PostMapping("/guardar") // Request convierte en un objeto Java desde un JSon
 	public void guardar(@RequestBody List<Producto> productos) {
 		productoDAO.saveAll(productos);
 	}
-	
+
 	@GetMapping("/listarById/{id}")
 	public Optional<Producto> listar(@PathVariable("id") Integer id) {
 		return productoDAO.findById(id);

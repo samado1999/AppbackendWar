@@ -15,7 +15,7 @@ public class Proveedor {
 	private String nombre_proveedor;
 	private String telefono_proveedor;
 	@OneToMany(mappedBy = "nitproveedor", cascade = CascadeType.ALL)
-    private List<Producto> productos;
+	private List<Producto> productos;
 
 	public Integer getNitproveedor() {
 		return nitproveedor;

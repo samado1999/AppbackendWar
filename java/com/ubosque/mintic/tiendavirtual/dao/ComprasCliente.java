@@ -27,6 +27,7 @@ public class ComprasCliente extends Conectar {
 				ventaDTO.setTotal_suma(Double.valueOf(rs.getString(3)));
 				list.add(ventaDTO);
 			}
+			this.Cerrar();
 			return list;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

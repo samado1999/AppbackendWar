@@ -14,13 +14,14 @@ function cargarArchivo() {
 		for (var i = 0; i < rows.length; i++) {
 			var fields = rows[i].split(",");
 			const prod = new Object();
-			prod.ivacompra = String(fields[0].trim());
+			prod.codigo_producto = String(fields[0].trim()); 
+			prod.ivacompra = String(fields[1].trim());
 			const prov = new Object();
-			prov.nitproveedor = String(fields[1].trim())
+			prov.nitproveedor = String(fields[2].trim())
 			prod.nitproveedor = prov;
-			prod.nombre_producto = String(fields[2].trim());
-			prod.precio_compra = String(fields[3].trim());
-			prod.precio_venta = String(fields[4].trim());
+			prod.nombre_producto = String(fields[3].trim());
+			prod.precio_compra = String(fields[4].trim());
+			prod.precio_venta = String(fields[5].trim());
 			list.push(prod);
 		}
 
